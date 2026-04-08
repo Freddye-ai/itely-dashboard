@@ -99,6 +99,11 @@ export function useVendas() {
     [dadosFiltrados],
   )
 
+  const todosClientes = useMemo(
+    () => calcularTopClientes(dadosFiltrados, 9999),
+    [dadosFiltrados],
+  )
+
   const dadosPorUF = useMemo(
     () => agruparPorUF(dadosFiltrados),
     [dadosFiltrados],
@@ -153,6 +158,7 @@ export function useVendas() {
     dadosPorMes,
     dadosPorGrupo,
     topClientes,
+    todosClientes,
     dadosPorUF,
     dadosPorMunicipio,
     dadosPorRegiao,

@@ -23,7 +23,7 @@ export default function App() {
   const {
     dados, dadosFiltrados, loading, error,
     ultimaAtualizacao, refetch, kpis,
-    dadosPorMes, dadosPorGrupo, topClientes,
+    dadosPorMes, dadosPorGrupo, topClientes, todosClientes,
     dadosPorUF, dadosPorMunicipio, dadosPorRegiao,
     anosDisponiveis, ufsDisponiveis, gruposDisponiveis, clientesDisponiveis,
   } = useVendas()
@@ -68,6 +68,7 @@ export default function App() {
               {activeTab === 'clientes' && (
                 <AnaliseClientes
                   topClientes={topClientes}
+                  todosClientes={todosClientes}
                 />
               )}
               {activeTab === 'geografica' && (

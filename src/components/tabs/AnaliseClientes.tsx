@@ -12,10 +12,11 @@ import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatt
 type ColKey = 'nomecliente' | 'receita' | 'unidades' | 'lucro' | 'margem' | 'participacao'
 
 interface AnaliseClientesProps {
-  topClientes: DadosCliente[]
+  topClientes:   DadosCliente[]
+  todosClientes: DadosCliente[]
 }
 
-export function AnaliseClientes({ topClientes }: AnaliseClientesProps) {
+export function AnaliseClientes({ topClientes, todosClientes }: AnaliseClientesProps) {
   const getValue = useCallback((row: DadosCliente, key: ColKey): number | string => {
     switch (key) {
       case 'nomecliente':  return row.nomecliente
@@ -28,7 +29,7 @@ export function AnaliseClientes({ topClientes }: AnaliseClientesProps) {
   }, [])
 
   const { sorted, sort, handleSort } = useSortable<DadosCliente, ColKey>(
-    topClientes, 'receita', 'desc', getValue,
+    todosClientes, 'receita', 'desc', getValue,
   )
 
   const isRankMode = sort.key === 'receita' && sort.dir === 'desc'

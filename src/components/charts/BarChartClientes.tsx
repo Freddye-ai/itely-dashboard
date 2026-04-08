@@ -1,6 +1,6 @@
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, type TooltipProps,
+  ResponsiveContainer, Cell, type TooltipProps,
 } from 'recharts'
 import type { DadosCliente } from '../../types'
 import { formatCurrencyShort, formatCurrency, formatPercent, formatNumber } from '../../utils/formatters'
@@ -74,8 +74,8 @@ export function BarChartClientes({ topClientes }: { topClientes: DadosCliente[] 
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: '#273548' }} />
             <Bar dataKey="receita" radius={[0, 4, 4, 0]} maxBarSize={20} label={<BarLabel />}>
-              {data.map((_, i) => (
-                <rect key={i} fill={CORES[i % CORES.length]} />
+              {data.map((d, i) => (
+                <Cell key={d.nomecliente} fill={CORES[i % CORES.length]} />
               ))}
             </Bar>
           </BarChart>
