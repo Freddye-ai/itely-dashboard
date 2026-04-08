@@ -6,6 +6,9 @@ const SHAREPOINT_URL = process.env.SHAREPOINT_URL ?? ''
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
 
+  console.log('[api/vendas] SHAREPOINT_URL length:', SHAREPOINT_URL.length)
+  console.log('[api/vendas] SHAREPOINT_URL starts with:', SHAREPOINT_URL.substring(0, 30))
+
   if (!SHAREPOINT_URL) {
     return res.status(500).json({ error: 'SHAREPOINT_URL não configurada' })
   }
