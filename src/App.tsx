@@ -23,7 +23,7 @@ export default function App() {
   const {
     dados, dadosFiltrados, loading, error,
     ultimaAtualizacao, refetch, kpis,
-    dadosPorMes, dadosPorGrupo, topClientes, todosClientes,
+    dadosPorMes, dadosPorGrupo, todosClientes,
     dadosPorUF, dadosPorMunicipio, dadosPorRegiao,
     anosDisponiveis, ufsDisponiveis, gruposDisponiveis, clientesDisponiveis,
   } = useVendas()
