@@ -1,8 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import https from 'https'
 
-const SHAREPOINT_URL =
-  'https://financebrazil-my.sharepoint.com/personal/freddye_pontes_financebrazil_com_br/_layouts/15/download.aspx?share=ESTcqHKRuYlAtY8DXtxqms8BSoS27C0ML1CxsoUCf24pyg'
+const SHAREPOINT_URL = process.env.SHAREPOINT_URL ?? ''
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')

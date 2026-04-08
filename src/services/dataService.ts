@@ -13,6 +13,8 @@ import { parseDateBR, parseExcelSerial, toMesAno } from '../utils/dateHelpers'
 const SHAREPOINT_PATH = import.meta.env.DEV
   ? '/sharepoint/personal/freddye_pontes_financebrazil_com_br/_layouts/15/download.aspx?share=ESTcqHKRuYlAtY8DXtxqms8BSoS27C0ML1CxsoUCf24pyg'
   : '/api/vendas'
+// NOTA: a URL real do SharePoint está armazenada como variável de ambiente SHAREPOINT_URL
+// na Vercel — nunca é exposta no código público
 
 // Colunas obrigatórias — se ausentes, lança erro descritivo
 const COLUNAS_OBRIGATORIAS = ['DTSAIDA', 'VLVENDA']
