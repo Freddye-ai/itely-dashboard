@@ -76,21 +76,37 @@ function getGrupo(descricao: string): string {
 // Fetch com retry manual
 // ---------------------------------------------------------------------------
 
-async function fetchWithRetry(
+async function fetchWithRetry<T>(
   url: string,
   options: object,
   retries = 1,
-): Promise<ArrayBuffer> {
+): Promise<T> {
   try {
-    const res = await axios.get<ArrayBuffer>(url, options)
+    const res = await axios.get<T>(url, options)
     return res.data
   } catch (err) {
     if (retries > 0) {
       console.warn('[dataService] Falha na requisição, tentando novamente...')
-      return fetchWithRetry(url, options, retries - 1)
+      return fetchWithRetry<T>(url, options, retries - 1)
     }
     throw err
   }
+}
+
+// Tipo serializado recebido da API (dtsaida como string ISO)
+interface VendaRowJSON {
+  dtsaida:     string
+  codfilial:   string
+  vlvenda:     number
+  vlcustoreal: number
+  qtvenda:     number
+  descricao:   string
+  nomecliente: string
+  uf:          string
+  municipio:   string
+  filial:      'BIALITA' | 'GRIT' | 'DESCONHECIDA'
+  grupo:       string
+  mesAno:      string
 }
 
 // ---------------------------------------------------------------------------
@@ -172,22 +188,37 @@ function normalizarLinha(raw: Record<string, unknown>, index: number): VendaRow 
  * Executa com retry automático (1 tentativa extra em caso de falha de rede).
  */
 export async function fetchVendas(): Promise<VendaRow[]> {
-  console.info('[dataService] Iniciando fetch do SharePoint...')
+  console.info('[dataService] Iniciando fetch...')
 
-  const buffer = await fetchWithRetry(SHAREPOINT_PATH, {
+  // Em produção a API já retorna JSON parseado; em DEV ainda usa o proxy Excel
+  if (!import.meta.env.DEV) {
+    const rows = await fetchWithRetry<VendaRowJSON[]>(SHAREPOINT_PATH, {
+      responseType: 'json',
+      timeout: REQUEST_TIMEOUT_MS,
+    })
+
+    // Converte dtsaida string ISO → Date
+    const vendas: VendaRow[] = rows.map((r) => ({
+      ...r,
+      dtsaida: new Date(r.dtsaida),
+    }))
+
+    console.info(`[dataService] ${vendas.length} linhas recebidas da API`)
+    return vendas
+  }
+
+  // --- Modo DEV: parse local do Excel via proxy Vite ---
+  console.info('[dataService] Modo DEV — parse local do Excel')
+  const buffer = await fetchWithRetry<ArrayBuffer>(SHAREPOINT_PATH, {
     responseType: 'arraybuffer',
     timeout: REQUEST_TIMEOUT_MS,
   })
 
   console.info('[dataService] Dados recebidos, iniciando parse...')
 
-  // Lê o workbook sem converter datas automaticamente (tratamos manualmente)
   const workbook = XLSX.read(buffer, { type: 'array', cellDates: false })
-
   const sheetName = workbook.SheetNames[0]
-  if (!sheetName) {
-    throw new Error('[dataService] Arquivo Excel sem sheets.')
-  }
+  if (!sheetName) throw new Error('[dataService] Arquivo Excel sem sheets.')
 
   const sheet = workbook.Sheets[sheetName]
   const rawRows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, { defval: '' })
@@ -197,7 +228,6 @@ export async function fetchVendas(): Promise<VendaRow[]> {
     return []
   }
 
-  // Loga todas as colunas disponíveis para diagnóstico
   const colunasPrimeira = Object.keys(rawRows[0])
   console.info('[dataService] Colunas encontradas no Excel:', colunasPrimeira)
   const faltando = COLUNAS_OBRIGATORIAS.filter((c) => !colunasPrimeira.includes(c))
@@ -205,14 +235,12 @@ export async function fetchVendas(): Promise<VendaRow[]> {
     throw new Error(`Colunas obrigatórias ausentes: ${faltando.join(', ')}`)
   }
 
-  // Normaliza todas as linhas, descartando as inválidas (retornam null)
   const vendas: VendaRow[] = []
   for (let i = 0; i < rawRows.length; i++) {
-    const row = normalizarLinha(rawRows[i], i + 2) // +2 = cabeçalho + base 1
+    const row = normalizarLinha(rawRows[i], i + 2)
     if (row !== null) vendas.push(row)
   }
 
   console.info(`[dataService] Parse concluído: ${vendas.length} linhas válidas de ${rawRows.length} totais.`)
-
   return vendas
 }
