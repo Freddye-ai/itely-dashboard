@@ -4,6 +4,8 @@ import {
   ModernTable, ModernThead, ModernTh, ModernTbody, ModernTfoot, ModernTfootTd,
   ModernTr, ModernTd, ModernEmpty, MargemBadge,
 } from '../ui/ModernTable'
+import { BarChartClientes } from '../charts/BarChartClientes'
+import { PieChartClientes } from '../charts/PieChartClientes'
 import type { DadosCliente } from '../../types'
 import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatters'
 
@@ -39,6 +41,12 @@ export function AnaliseClientes({ topClientes }: AnaliseClientesProps) {
 
   return (
     <div className="space-y-4">
+      {/* Gráficos de clientes */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <BarChartClientes topClientes={sorted} />
+        <PieChartClientes topClientes={sorted} />
+      </div>
+
     <ModernTable>
       <ModernThead>
         <ModernTh label="Nome"          colKey="nomecliente"  sort={sort} onSort={handleSort} />

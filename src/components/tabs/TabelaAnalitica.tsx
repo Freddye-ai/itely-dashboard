@@ -5,6 +5,8 @@ import {
   ModernTable, ModernThead, ModernTh, ModernTbody, ModernTfoot, ModernTfootTd,
   ModernEmpty, MargemBadge,
 } from '../ui/ModernTable'
+import { BarChartGrupos } from '../charts/BarChartGrupos'
+import { PieChartGrupos } from '../charts/PieChartGrupos'
 import type { DadosGrupo, VendaRow } from '../../types'
 import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatters'
 
@@ -119,6 +121,13 @@ export function TabelaAnalitica({ dadosPorGrupo, dadosFiltrados }: TabelaAnaliti
   const margemTotal = totais.receita === 0 ? 0 : totais.lucro / totais.receita
 
   return (
+    <div className="space-y-4">
+      {/* Gráficos de grupos */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <BarChartGrupos dadosPorGrupo={dadosPorGrupo} />
+        <PieChartGrupos dadosPorGrupo={dadosPorGrupo} />
+      </div>
+
     <ModernTable>
       <ModernThead>
         <ModernTh label="Grupo"        colKey="grupo"        sort={sort} onSort={handleSort} accent />
@@ -191,5 +200,6 @@ export function TabelaAnalitica({ dadosPorGrupo, dadosFiltrados }: TabelaAnaliti
         </ModernTfoot>
       )}
     </ModernTable>
+    </div>
   )
 }
