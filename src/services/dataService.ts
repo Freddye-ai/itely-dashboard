@@ -31,8 +31,8 @@ function resolveCol(raw: Record<string, unknown>, ...aliases: string[]): unknown
   return ''
 }
 
-// Timeout da requisição em ms (30s para arquivos grandes)
-const REQUEST_TIMEOUT_MS = 30_000
+// Timeout da requisição em ms (60s — SharePoint pode ser lento)
+const REQUEST_TIMEOUT_MS = 60_000
 
 // ---------------------------------------------------------------------------
 // Mapeamento de filial

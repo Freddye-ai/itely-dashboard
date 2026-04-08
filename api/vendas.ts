@@ -94,7 +94,7 @@ interface VendaRowJSON {
 // Handler
 // ---------------------------------------------------------------------------
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(_req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
 
   if (!SHAREPOINT_URL) {
@@ -105,7 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 1. Busca o Excel no SharePoint
     const response = await axios.get<ArrayBuffer>(SHAREPOINT_URL, {
       responseType: 'arraybuffer',
-      timeout: 30000,
+      timeout: 50000,
       maxRedirects: 10,
       headers: { 'User-Agent': 'Mozilla/5.0' },
     })
