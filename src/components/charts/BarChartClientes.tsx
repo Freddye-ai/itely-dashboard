@@ -47,7 +47,7 @@ function BarLabel(props: { x?: number; y?: number; width?: number; height?: numb
   )
 }
 
-const CORES = ['#22d3ee','#D4A017','#a78bfa','#10b981','#f59e0b','#f87171','#60a5fa','#34d399','#fb923c','#e879f9']
+const COR_BARRA = '#D4A017'
 
 export function BarChartClientes({ topClientes }: { topClientes: DadosCliente[] }) {
   const data = topClientes.slice(0, 10)
@@ -74,8 +74,8 @@ export function BarChartClientes({ topClientes }: { topClientes: DadosCliente[] 
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: '#273548' }} />
             <Bar dataKey="receita" radius={[0, 4, 4, 0]} maxBarSize={20} label={<BarLabel />}>
-              {data.map((d, i) => (
-                <Cell key={d.nomecliente} fill={CORES[i % CORES.length]} />
+              {data.map((d) => (
+                <Cell key={d.nomecliente} fill={COR_BARRA} />
               ))}
             </Bar>
           </BarChart>

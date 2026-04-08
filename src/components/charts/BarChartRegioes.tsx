@@ -7,14 +7,7 @@ import { formatCurrencyShort, formatCurrency, formatPercent, formatNumber } from
 
 type Metrica = 'receita' | 'lucro'
 
-const COR_REGIOES: Record<string, string> = {
-  'Sul':          '#D4A017',
-  'Sudeste':      '#22d3ee',
-  'Nordeste':     '#a78bfa',
-  'Norte':        '#f59e0b',
-  'Centro-Oeste': '#f87171',
-  'Outras':       '#888888',
-}
+const COR_BARRA = '#D4A017'
 
 function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
   if (!active || !payload?.length) return null
@@ -77,7 +70,7 @@ export function BarChartRegioes({ dadosPorRegiao, metrica = 'receita' }: Props) 
             <Tooltip content={<CustomTooltip />} cursor={{ fill: '#273548' }} />
             <Bar dataKey={metrica} radius={[0, 4, 4, 0]} maxBarSize={22} label={<BarLabel />}>
               {data.map((d) => (
-                <Cell key={d.regiao} fill={COR_REGIOES[d.regiao] ?? '#94a3b8'} />
+                <Cell key={d.regiao} fill={COR_BARRA} />
               ))}
             </Bar>
           </BarChart>
