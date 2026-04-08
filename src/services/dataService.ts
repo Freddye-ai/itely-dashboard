@@ -93,22 +93,6 @@ async function fetchWithRetry<T>(
   }
 }
 
-// Tipo serializado recebido da API (dtsaida como string ISO)
-interface VendaRowJSON {
-  dtsaida:     string
-  codfilial:   string
-  vlvenda:     number
-  vlcustoreal: number
-  qtvenda:     number
-  descricao:   string
-  nomecliente: string
-  uf:          string
-  municipio:   string
-  filial:      'BIALITA' | 'GRIT' | 'DESCONHECIDA'
-  grupo:       string
-  mesAno:      string
-}
-
 // ---------------------------------------------------------------------------
 // Normalização de uma linha bruta
 // ---------------------------------------------------------------------------
