@@ -1,27 +1,30 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import https from 'https'
+import axios from 'axios'
 
 const SHAREPOINT_URL = process.env.SHAREPOINT_URL ?? ''
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET')
 
-  https.get(SHAREPOINT_URL, (upstream) => {
-    // Segue redirecionamentos do SharePoint
-    if (upstream.statusCode && upstream.statusCode >= 300 && upstream.statusCode < 400 && upstream.headers.location) {
-      https.get(upstream.headers.location, (redirected) => {
-        res.setHeader('Content-Type', 'application/octet-stream')
-        redirected.pipe(res)
-      }).on('error', (err) => {
-        res.status(502).json({ error: 'Erro ao seguir redirect: ' + err.message })
-      })
-      return
-    }
+  if (!SHAREPOINT_URL) {
+    return res.status(500).json({ error: 'SHAREPOINT_URL não configurada' })
+  }
+
+  try {
+    const response = await axios.get(SHAREPOINT_URL, {
+      responseType: 'arraybuffer',
+      timeout: 30000,
+      maxRedirects: 10,
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+      },
+    })
 
     res.setHeader('Content-Type', 'application/octet-stream')
-    upstream.pipe(res)
-  }).on('error', (err) => {
-    res.status(502).json({ error: 'Erro ao buscar arquivo: ' + err.message })
-  })
+    res.send(Buffer.from(response.data))
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err)
+    console.error('[api/vendas] Erro:', message)
+    res.status(500).json({ error: message })
+  }
 }
