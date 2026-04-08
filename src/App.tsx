@@ -67,7 +67,6 @@ export default function App() {
               )}
               {activeTab === 'clientes' && (
                 <AnaliseClientes
-                  topClientes={topClientes}
                   todosClientes={todosClientes}
                 />
               )}

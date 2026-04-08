@@ -12,11 +12,10 @@ import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatt
 type ColKey = 'nomecliente' | 'receita' | 'unidades' | 'lucro' | 'margem' | 'participacao'
 
 interface AnaliseClientesProps {
-  topClientes:   DadosCliente[]
   todosClientes: DadosCliente[]
 }
 
-export function AnaliseClientes({ topClientes, todosClientes }: AnaliseClientesProps) {
+export function AnaliseClientes({ todosClientes }: AnaliseClientesProps) {
   const getValue = useCallback((row: DadosCliente, key: ColKey): number | string => {
     switch (key) {
       case 'nomecliente':  return row.nomecliente
@@ -42,10 +41,10 @@ export function AnaliseClientes({ topClientes, todosClientes }: AnaliseClientesP
 
   return (
     <div className="space-y-4">
-      {/* Gráficos de clientes */}
+      {/* Gráficos de clientes — top 10 por receita */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-        <BarChartClientes topClientes={sorted} />
-        <PieChartClientes topClientes={sorted} />
+        <BarChartClientes topClientes={todosClientes.slice(0, 10)} />
+        <PieChartClientes topClientes={todosClientes.slice(0, 10)} />
       </div>
 
     <ModernTable>
