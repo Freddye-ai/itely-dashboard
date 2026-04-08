@@ -49,7 +49,7 @@ export function PieChartFilial({ receitaBialita, receitaGrit }: Props) {
   const data = buildData(receitaBialita, receitaGrit)
 
   return (
-    <div className="bg-bg-card border border-border-dark rounded-xl p-4 flex flex-col">
+    <div className="bg-bg-card border border-border-dark rounded-xl p-4 h-full flex flex-col">
       <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-1">
         Participação por Empresa
       </h3>

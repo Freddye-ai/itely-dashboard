@@ -42,7 +42,7 @@ export function BarChartGrupos({ dadosPorGrupo, topN = 10 }: BarChartGruposProps
   const data = dadosPorGrupo.slice(0, topN)
 
   return (
-    <div className="bg-bg-card border border-border-dark rounded-xl p-4">
+    <div className="bg-bg-card border border-border-dark rounded-xl p-4 h-full flex flex-col">
       <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-4">
         Top Grupos por Receita
       </h3>

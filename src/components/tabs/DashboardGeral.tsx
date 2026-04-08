@@ -42,25 +42,18 @@ export function DashboardGeral({ dadosPorMes, dadosPorGrupo, dadosPorRegiao, dad
         ))}
       </div>
 
-      {/* Bloco principal: bars empilhados (2/3) | donuts empilhados (1/3) */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start">
-        {/* Coluna esquerda — 2 gráficos de barra empilhados */}
-        <div className="xl:col-span-2 flex flex-col gap-4">
-          <ComposedChartMensal dadosPorMes={dadosPorMes} metrica={metrica} />
-          <BarChartEstados dadosPorUF={dadosPorUF} metrica={metrica} />
-        </div>
-
-        {/* Coluna direita — 2 donuts empilhados */}
-        <div className="flex flex-col gap-4">
-          <PieChartFilial receitaBialita={kpis.receitaBialita} receitaGrit={kpis.receitaGrit} />
-          <PieChartGrupos dadosPorGrupo={dadosPorGrupo} />
-        </div>
+      {/* Grid 2x2 — altura uniforme por linha via grid-rows */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-rows-2 gap-4" style={{ gridAutoRows: '420px' }}>
+        <div className="h-full"><ComposedChartMensal dadosPorMes={dadosPorMes} metrica={metrica} /></div>
+        <div className="h-full"><PieChartFilial receitaBialita={kpis.receitaBialita} receitaGrit={kpis.receitaGrit} /></div>
+        <div className="h-full"><BarChartEstados dadosPorUF={dadosPorUF} metrica={metrica} /></div>
+        <div className="h-full"><PieChartGrupos dadosPorGrupo={dadosPorGrupo} /></div>
       </div>
 
-      {/* Linha inferior: Regiões (1/2) + Top grupos (1/2) */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-        <BarChartRegioes dadosPorRegiao={dadosPorRegiao} metrica={metrica} />
-        <BarChartGrupos  dadosPorGrupo={dadosPorGrupo} />
+      {/* Linha inferior: Regiões + Top Grupos */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4" style={{ gridAutoRows: '360px' }}>
+        <div className="h-full"><BarChartRegioes dadosPorRegiao={dadosPorRegiao} metrica={metrica} /></div>
+        <div className="h-full"><BarChartGrupos  dadosPorGrupo={dadosPorGrupo} /></div>
       </div>
     </div>
   )

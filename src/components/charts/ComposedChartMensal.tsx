@@ -80,7 +80,7 @@ export function ComposedChartMensal({ dadosPorMes, metrica }: Props) {
   const data = buildData(dadosPorMes, metrica)
 
   return (
-    <div className="bg-bg-card border border-border-dark rounded-xl p-4">
+    <div className="bg-bg-card border border-border-dark rounded-xl p-4 h-full flex flex-col">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider">
           {metrica === 'receita' ? 'Receita' : 'Lucro Bruto'} Mensal · Filial + Margem

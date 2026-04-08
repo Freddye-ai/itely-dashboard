@@ -59,7 +59,7 @@ export function BarChartRegioes({ dadosPorRegiao, metrica = 'receita' }: Props) 
   const label = metrica === 'receita' ? 'Receita Bruta' : 'Lucro Bruto'
 
   return (
-    <div className="bg-bg-card border border-border-dark rounded-xl p-4">
+    <div className="bg-bg-card border border-border-dark rounded-xl p-4 h-full flex flex-col">
       <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-4">
         {label} por Região
       </h3>

@@ -73,7 +73,7 @@ export function PieChartGrupos({ dadosPorGrupo }: PieChartGruposProps) {
   const data = buildPieData(dadosPorGrupo)
 
   return (
-    <div className="bg-bg-card border border-border-dark rounded-xl p-4 flex flex-col">
+    <div className="bg-bg-card border border-border-dark rounded-xl p-4 h-full flex flex-col">
       <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-1">
         Mix de Produtos
       </h3>
