@@ -188,27 +188,8 @@ function normalizarLinha(raw: Record<string, unknown>, index: number): VendaRow 
  * Executa com retry automático (1 tentativa extra em caso de falha de rede).
  */
 export async function fetchVendas(): Promise<VendaRow[]> {
-  console.info('[dataService] Iniciando fetch...')
+  console.info('[dataService] Iniciando fetch do SharePoint...')
 
-  // Em produção a API já retorna JSON parseado; em DEV ainda usa o proxy Excel
-  if (!import.meta.env.DEV) {
-    const rows = await fetchWithRetry<VendaRowJSON[]>(SHAREPOINT_PATH, {
-      responseType: 'json',
-      timeout: REQUEST_TIMEOUT_MS,
-    })
-
-    // Converte dtsaida string ISO → Date
-    const vendas: VendaRow[] = rows.map((r) => ({
-      ...r,
-      dtsaida: new Date(r.dtsaida),
-    }))
-
-    console.info(`[dataService] ${vendas.length} linhas recebidas da API`)
-    return vendas
-  }
-
-  // --- Modo DEV: parse local do Excel via proxy Vite ---
-  console.info('[dataService] Modo DEV — parse local do Excel')
   const buffer = await fetchWithRetry<ArrayBuffer>(SHAREPOINT_PATH, {
     responseType: 'arraybuffer',
     timeout: REQUEST_TIMEOUT_MS,
