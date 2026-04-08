@@ -100,7 +100,7 @@ export function useVendas() {
   )
 
   const todosClientes = useMemo(
-    () => calcularTopClientes(dadosFiltrados, 9999),
+    () => calcularTopClientes(dadosFiltrados, 9999).filter((c) => c.receita > 0),
     [dadosFiltrados],
   )
 

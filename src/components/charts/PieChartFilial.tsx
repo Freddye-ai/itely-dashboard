@@ -51,7 +51,7 @@ export function PieChartFilial({ receitaBialita, receitaGrit }: Props) {
   return (
     <div className="bg-bg-card border border-border-dark rounded-xl p-4 flex flex-col">
       <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-1">
-        Mix por Fornecedor
+        Participação por Empresa
       </h3>
       <p className="text-[11px] text-text-muted/60 mb-4">Participação % por filial</p>
 
