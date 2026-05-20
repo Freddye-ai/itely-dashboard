@@ -132,7 +132,7 @@ function Checkbox({ checked }: { checked: boolean }) {
       'w-3.5 h-3.5 rounded border flex items-center justify-center flex-shrink-0 transition-all',
       checked ? 'bg-accent-cyan border-accent-cyan' : 'border-border-dark',
     ].join(' ')}>
-      {checked && <Check className="w-2.5 h-2.5 text-white stroke-[3]" />}
+      {checked && <Check className="w-2.5 h-2.5 text-text-primary stroke-[3]" />}
     </div>
   )
 }

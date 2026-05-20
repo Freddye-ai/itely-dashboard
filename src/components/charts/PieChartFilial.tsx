@@ -21,7 +21,7 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
   const d = payload[0].payload as PieData
   return (
     <div className="bg-bg-surface border border-border-dark rounded-lg p-3 shadow-xl text-xs">
-      <p className="text-white font-semibold mb-1">{d.name}</p>
+      <p className="text-text-primary font-semibold mb-1">{d.name}</p>
       <p className="text-text-muted">Receita: <span className="text-accent-emerald font-medium">{formatCurrency(d.receita)}</span></p>
       <p className="text-text-muted">Participação: <span className="text-accent-cyan font-medium">{formatPercent(d.percentual)}</span></p>
     </div>
@@ -87,7 +87,7 @@ export function PieChartFilial({ receitaBialita, receitaGrit }: Props) {
               <div key={d.name} className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-sm flex-shrink-0" style={{ backgroundColor: CORES[i] }} />
                 <span className="text-sm text-text-muted flex-1">{d.name}</span>
-                <span className="text-sm text-white font-semibold">{formatPercent(d.percentual, 1)}</span>
+                <span className="text-sm text-text-primary font-semibold">{formatPercent(d.percentual, 1)}</span>
                 <span className="text-xs text-text-muted/60 w-28 text-right">{formatCurrency(d.receita)}</span>
               </div>
             ))}

@@ -41,7 +41,7 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
   const d = payload[0].payload as PieData
   return (
     <div className="bg-bg-surface border border-border-dark rounded-lg p-3 shadow-xl text-xs">
-      <p className="text-white font-semibold mb-1">{d.name}</p>
+      <p className="text-text-primary font-semibold mb-1">{d.name}</p>
       <p className="text-text-muted">Receita: <span className="text-accent-emerald font-medium">{formatCurrency(d.receita)}</span></p>
       <p className="text-text-muted">Participação: <span className="text-accent-cyan font-medium">{formatPercent(d.percentual)}</span></p>
     </div>
@@ -115,7 +115,7 @@ export function PieChartGrupos({ dadosPorGrupo }: PieChartGruposProps) {
                   style={{ backgroundColor: CORES[i % CORES.length] }}
                 />
                 <span className="text-[10px] text-text-muted truncate">{d.name}</span>
-                <span className="text-[10px] text-white font-medium ml-auto flex-shrink-0">
+                <span className="text-[10px] text-text-primary font-medium ml-auto flex-shrink-0">
                   {formatPercent(d.percentual, 0)}
                 </span>
               </div>

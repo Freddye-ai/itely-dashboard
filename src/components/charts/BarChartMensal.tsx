@@ -82,7 +82,7 @@ function CustomTooltip({ active, payload, label }: TooltipProps<number, string>)
               style={{ backgroundColor: entry.color }}
             />
             <span className="text-text-muted">{ano}:</span>
-            <span className="text-white font-medium">{formatCurrency(entry.value ?? 0)}</span>
+            <span className="text-text-primary font-medium">{formatCurrency(entry.value ?? 0)}</span>
             <span className="text-text-muted">· {formatNumber(un)} un.</span>
           </div>
         )

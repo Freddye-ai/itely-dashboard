@@ -86,7 +86,7 @@ function MunicipioRow({ m, index }: { m: DadosMunicipio; index: number }) {
       <td className="px-4 py-2.5">
         <div className="flex items-center gap-3 pl-6">
           <span className="text-[11px] text-text-muted/40 w-4 text-right flex-shrink-0">{index + 1}</span>
-          <span className="text-sm text-white/90">{m.municipio}</span>
+          <span className="text-sm text-text-primary/90">{m.municipio}</span>
         </div>
       </td>
       <td className="px-4 py-2.5 text-right">
@@ -156,7 +156,7 @@ export function AnaliseGeografica({ dadosPorUF, dadosPorMunicipio, dadosPorRegia
                   <MapPin className="w-3 h-3 flex-shrink-0" style={{ color: cor }} />
                   <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: cor }}>{r.regiao}</span>
                 </div>
-                <p className="text-white font-bold text-base leading-tight">{formatCurrencyShort(r.receita)}</p>
+                <p className="text-text-primary font-bold text-base leading-tight">{formatCurrencyShort(r.receita)}</p>
                 <div className="flex items-center justify-between text-[10px] text-text-muted">
                   <span>Margem</span>
                   <span className={r.margem >= 0.4 ? 'text-accent-emerald' : r.margem >= 0.2 ? 'text-amber-400' : 'text-accent-red'}>

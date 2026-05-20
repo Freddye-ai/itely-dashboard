@@ -12,7 +12,7 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
   const d = payload[0].payload as DadosUF
   return (
     <div className="bg-bg-surface border border-border-dark rounded-xl p-3 shadow-2xl text-xs min-w-[180px]">
-      <p className="text-white font-bold text-sm mb-2">{d.uf}</p>
+      <p className="text-text-primary font-bold text-sm mb-2">{d.uf}</p>
       <div className="space-y-1.5 text-text-muted">
         <div className="flex justify-between gap-4">
           <span>Receita Bruta</span>
@@ -20,7 +20,7 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
         </div>
         <div className="flex justify-between gap-4">
           <span>Lucro Bruto</span>
-          <span className="text-white">{formatCurrency(d.lucro)}</span>
+          <span className="text-text-primary">{formatCurrency(d.lucro)}</span>
         </div>
         <div className="flex justify-between gap-4">
           <span>Margem</span>
@@ -28,7 +28,7 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
         </div>
         <div className="flex justify-between gap-4">
           <span>Unidades</span>
-          <span className="text-white">{formatNumber(d.unidades)}</span>
+          <span className="text-text-primary">{formatNumber(d.unidades)}</span>
         </div>
         <div className="flex justify-between gap-4">
           <span>Participação</span>

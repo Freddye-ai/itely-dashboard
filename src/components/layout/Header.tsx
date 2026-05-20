@@ -21,13 +21,13 @@ export function Header({ loading, ultimaAtualizacao, onRefetch }: HeaderProps) {
           {ultimaAtualizacao && !loading && (
             <span className="text-xs text-text-muted">
               Atualizado às{' '}
-              <span className="text-white font-medium">{formatHora(ultimaAtualizacao)}</span>
+              <span className="text-text-primary font-medium">{formatHora(ultimaAtualizacao)}</span>
             </span>
           )}
           <button
             onClick={onRefetch}
             disabled={loading}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-surface border border-border-dark text-sm text-text-muted hover:text-white hover:border-accent-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-surface border border-border-dark text-sm text-text-muted hover:text-text-primary hover:border-accent-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? <LoadingSpinner size="sm" inline /> : <RefreshCw className="w-4 h-4" />}
             Atualizar

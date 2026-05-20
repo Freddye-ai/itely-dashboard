@@ -53,7 +53,7 @@ export function ErrorCard({ message, onRetry }: ErrorCardProps) {
       {onRetry && (
         <button
           onClick={onRetry}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-surface border border-border-dark text-sm text-text-muted hover:text-white hover:border-accent-cyan transition-colors"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-bg-surface border border-border-dark text-sm text-text-muted hover:text-text-primary hover:border-accent-cyan transition-colors"
         >
           <RefreshCw className="w-4 h-4" />
           Tentar novamente

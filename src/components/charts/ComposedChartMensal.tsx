@@ -32,14 +32,14 @@ function CustomTooltip({ active, payload, label }: TooltipProps<number, string>)
 
   return (
     <div className="bg-bg-surface border border-border-dark rounded-xl p-3 shadow-2xl text-xs min-w-[180px]">
-      <p className="text-white font-semibold mb-2">{label}</p>
+      <p className="text-text-primary font-semibold mb-2">{label}</p>
       <div className="space-y-1.5">
         {bialita && (
           <div className="flex justify-between gap-4">
             <span className="flex items-center gap-1.5 text-text-muted">
               <span className="w-2 h-2 rounded-full bg-accent-cyan flex-shrink-0" />BIALITA
             </span>
-            <span className="text-white font-medium">{formatCurrency(bialita.value ?? 0)}</span>
+            <span className="text-text-primary font-medium">{formatCurrency(bialita.value ?? 0)}</span>
           </div>
         )}
         {grit && (
@@ -47,7 +47,7 @@ function CustomTooltip({ active, payload, label }: TooltipProps<number, string>)
             <span className="flex items-center gap-1.5 text-text-muted">
               <span className="w-2 h-2 rounded-full bg-accent-emerald flex-shrink-0" />GRIT
             </span>
-            <span className="text-white font-medium">{formatCurrency(grit.value ?? 0)}</span>
+            <span className="text-text-primary font-medium">{formatCurrency(grit.value ?? 0)}</span>
           </div>
         )}
         <div className="border-t border-border-dark/50 pt-1.5 mt-1.5 flex justify-between gap-4">
@@ -56,7 +56,7 @@ function CustomTooltip({ active, payload, label }: TooltipProps<number, string>)
         </div>
         <div className="flex justify-between gap-4">
           <span className="text-text-muted">Unidades</span>
-          <span className="text-white">{formatNumber(row.unidades)}</span>
+          <span className="text-text-primary">{formatNumber(row.unidades)}</span>
         </div>
         {margem && (
           <div className="flex justify-between gap-4">

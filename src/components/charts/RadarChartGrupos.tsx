@@ -33,11 +33,11 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
   const d = payload[0].payload as ReturnType<typeof buildRadarData>[number]
   return (
     <div className="bg-bg-surface border border-border-dark rounded-xl p-2.5 shadow-2xl text-xs">
-      <p className="text-white font-semibold mb-1.5">{d.grupo}</p>
+      <p className="text-text-primary font-semibold mb-1.5">{d.grupo}</p>
       <div className="space-y-1 text-text-muted">
         <p>Receita <span className="text-accent-cyan">{d.receita}%</span></p>
         <p>Lucro <span className="text-accent-emerald">{d.lucro}%</span></p>
-        <p>Unidades <span className="text-white">{d.unidades}%</span></p>
+        <p>Unidades <span className="text-text-primary">{d.unidades}%</span></p>
         <p>Margem <span className="text-amber-400">{formatPercent(d._margem)}</span></p>
       </div>
     </div>

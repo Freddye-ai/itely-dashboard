@@ -34,7 +34,7 @@ export function DashboardGeral({ dadosPorMes, dadosPorGrupo, dadosPorRegiao, dad
               'px-4 py-1.5 rounded-lg text-xs font-semibold transition-all',
               metrica === m
                 ? 'bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/40 shadow-[0_0_10px_rgba(34,211,238,0.15)]'
-                : 'text-text-muted hover:text-white',
+                : 'text-text-muted hover:text-text-primary',
             ].join(' ')}
           >
             {m === 'receita' ? 'Receita Bruta' : 'Lucro Bruto'}

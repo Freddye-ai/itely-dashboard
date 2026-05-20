@@ -35,7 +35,7 @@ export function TabNav({ activeTab, onChange }: TabNavProps) {
               'px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors',
               active
                 ? 'border-accent-cyan text-accent-cyan'
-                : 'border-transparent text-text-muted hover:text-white hover:border-border-dark',
+                : 'border-transparent text-text-muted hover:text-text-primary hover:border-border-dark',
             ].join(' ')}
           >
             {tab.label}

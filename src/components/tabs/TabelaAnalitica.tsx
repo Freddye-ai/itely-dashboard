@@ -61,7 +61,7 @@ function DescricaoRow({ d, index }: { d: DescricaoAgg; index: number }) {
       <td className="px-4 py-2.5">
         <div className="flex items-center gap-3 pl-6">
           <span className="text-[11px] text-text-muted/40 w-4 text-right flex-shrink-0">{index + 1}</span>
-          <span className="text-sm text-white/85">{d.descricao}</span>
+          <span className="text-sm text-text-primary/85">{d.descricao}</span>
         </div>
       </td>
       <td className="px-4 py-2.5 text-right">

@@ -87,8 +87,8 @@ export function ModernTh<K extends string>({
     <th
       className={[
         'px-4 py-3.5 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap select-none border-r border-accent-cyan/20 last:border-r-0',
-        isActive ? 'text-white' : 'text-accent-cyan',
-        clickable ? 'cursor-pointer hover:text-white transition-all' : '',
+        isActive ? 'text-text-primary' : 'text-accent-cyan',
+        clickable ? 'cursor-pointer hover:text-text-primary transition-all' : '',
         alignClass,
         className,
       ].join(' ')}
@@ -105,8 +105,8 @@ export function ModernTh<K extends string>({
 function SortIcon({ active, dir }: { active: boolean; dir: SortDir }) {
   if (!active) return <ChevronsUpDown className="w-3 h-3 opacity-30" />
   return dir === 'asc'
-    ? <ChevronUp   className="w-3 h-3 text-white" />
-    : <ChevronDown className="w-3 h-3 text-white" />
+    ? <ChevronUp   className="w-3 h-3 text-text-primary" />
+    : <ChevronDown className="w-3 h-3 text-text-primary" />
 }
 
 // ---------------------------------------------------------------------------
@@ -141,7 +141,7 @@ export function ModernTd({ children, align = 'left', className = '', muted = fal
 }) {
   const alignClass = align === 'right' ? 'text-right' : align === 'center' ? 'text-center' : 'text-left'
   return (
-    <td className={['px-4 py-3 text-sm', muted ? 'text-text-muted' : 'text-white', alignClass, className].join(' ')}>
+    <td className={['px-4 py-3 text-sm', muted ? 'text-text-muted' : 'text-text-primary', alignClass, className].join(' ')}>
       {children}
     </td>
   )
@@ -163,7 +163,7 @@ export function ModernTfootTd({ children, align = 'left', className = '' }: {
 }) {
   const alignClass = align === 'right' ? 'text-right' : align === 'center' ? 'text-center' : 'text-left'
   return (
-    <td className={['px-4 py-3 text-sm font-semibold text-white', alignClass, className].join(' ')}>
+    <td className={['px-4 py-3 text-sm font-semibold text-text-primary', alignClass, className].join(' ')}>
       {children}
     </td>
   )
@@ -200,7 +200,7 @@ export function RankBadge({ rank, highlight }: { rank: number; highlight?: boole
 // Badge de margem colorido
 // ---------------------------------------------------------------------------
 export function MargemBadge({ value }: { value: number }) {
-  const color  = value >= 0.5 ? 'text-accent-emerald' : value >= 0.3 ? 'text-white' : 'text-accent-red'
+  const color  = value >= 0.5 ? 'text-accent-emerald' : value >= 0.3 ? 'text-text-primary' : 'text-accent-red'
   const bg     = value >= 0.5 ? 'bg-accent-emerald/10' : value >= 0.3 ? 'bg-white/5' : 'bg-accent-red/10'
   const border = value >= 0.5 ? 'border-accent-emerald/20' : value >= 0.3 ? 'border-white/10' : 'border-accent-red/20'
   return (
@@ -223,7 +223,7 @@ export function TableSelect({ label, value, onChange, children }: {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="bg-bg-surface border border-border-dark rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-accent-cyan transition-colors cursor-pointer"
+        className="bg-bg-surface border border-border-dark rounded-lg px-2.5 py-1 text-xs text-text-primary focus:outline-none focus:border-accent-cyan transition-colors cursor-pointer"
       >
         {children}
       </select>

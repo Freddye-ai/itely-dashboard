@@ -68,7 +68,7 @@ export function AnaliseClientes({ todosClientes }: AnaliseClientesProps) {
                 {/* Nome */}
                 <ModernTd>
                   <div className="flex items-center gap-2">
-                    <span className={isTop ? 'text-accent-cyan font-semibold' : 'text-white font-medium'}>
+                    <span className={isTop ? 'text-accent-cyan font-semibold' : 'text-text-primary font-medium'}>
                       {row.nomecliente || '—'}
                     </span>
                     {isTop && (

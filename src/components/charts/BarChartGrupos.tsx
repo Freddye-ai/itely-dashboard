@@ -21,12 +21,12 @@ function CustomTooltip({ active, payload }: TooltipProps<number, string>) {
 
   return (
     <div className="bg-bg-surface border border-border-dark rounded-lg p-3 shadow-xl text-xs">
-      <p className="text-white font-semibold mb-2">{d.grupo}</p>
+      <p className="text-text-primary font-semibold mb-2">{d.grupo}</p>
       <div className="space-y-1 text-text-muted">
         <p>Receita: <span className="text-accent-emerald font-medium">{formatCurrency(d.receita)}</span></p>
-        <p>Unidades: <span className="text-white">{formatNumber(d.unidades)}</span></p>
-        <p>Lucro: <span className="text-white">{formatCurrency(d.lucro)}</span></p>
-        <p>Margem: <span className="text-white">{formatPercent(d.margem)}</span></p>
+        <p>Unidades: <span className="text-text-primary">{formatNumber(d.unidades)}</span></p>
+        <p>Lucro: <span className="text-text-primary">{formatCurrency(d.lucro)}</span></p>
+        <p>Margem: <span className="text-text-primary">{formatPercent(d.margem)}</span></p>
       </div>
     </div>
   )
