@@ -65,7 +65,7 @@ function DescricaoRow({ d, index }: { d: DescricaoAgg; index: number }) {
         </div>
       </td>
       <td className="px-4 py-2.5 text-right">
-        <span className="text-accent-emerald/80 text-sm font-medium">{formatCurrency(d.receita)}</span>
+        <span className="text-accent-cyan/80 text-sm font-medium">{formatCurrency(d.receita)}</span>
       </td>
       <td className="px-4 py-2.5 text-right text-text-muted text-sm">{formatNumber(d.unidades)}</td>
       <td className="px-4 py-2.5 text-right text-text-muted text-sm">{formatCurrency(d.lucro)}</td>
@@ -165,7 +165,7 @@ export function TabelaAnalitica({ dadosPorGrupo, dadosFiltrados }: TabelaAnaliti
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <span className="text-accent-emerald font-bold text-sm">{formatCurrency(row.receita)}</span>
+                    <span className="text-accent-cyan font-bold text-sm">{formatCurrency(row.receita)}</span>
                   </td>
                   <td className="px-4 py-3 text-right text-text-muted text-sm">{formatNumber(row.unidades)}</td>
                   <td className="px-4 py-3 text-right text-text-muted text-sm">{formatCurrency(row.lucro)}</td>
@@ -192,7 +192,7 @@ export function TabelaAnalitica({ dadosPorGrupo, dadosFiltrados }: TabelaAnaliti
       {sorted.length > 0 && (
         <ModernTfoot>
           <ModernTfootTd className="text-text-muted uppercase text-[11px] tracking-widest">Total Geral</ModernTfootTd>
-          <ModernTfootTd align="right" className="text-accent-emerald">{formatCurrency(totais.receita)}</ModernTfootTd>
+          <ModernTfootTd align="right" className="text-accent-cyan">{formatCurrency(totais.receita)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatNumber(totais.unidades)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatCurrency(totais.lucro)}</ModernTfootTd>
           <ModernTfootTd align="right"><MargemBadge value={margemTotal} /></ModernTfootTd>

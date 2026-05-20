@@ -81,7 +81,7 @@ export function AnaliseClientes({ todosClientes }: AnaliseClientesProps) {
 
                 {/* Receita */}
                 <ModernTd align="right">
-                  <span className="text-accent-emerald font-semibold">{formatCurrency(row.receita)}</span>
+                  <span className="text-accent-cyan font-semibold">{formatCurrency(row.receita)}</span>
                 </ModernTd>
 
                 {/* Unidades */}
@@ -113,7 +113,7 @@ export function AnaliseClientes({ todosClientes }: AnaliseClientesProps) {
       {sorted.length > 0 && (
         <ModernTfoot>
           <ModernTfootTd className="text-text-muted uppercase text-[11px] tracking-widest">Total (Top {sorted.length})</ModernTfootTd>
-          <ModernTfootTd align="right" className="text-accent-emerald">{formatCurrency(totais.receita)}</ModernTfootTd>
+          <ModernTfootTd align="right" className="text-accent-cyan">{formatCurrency(totais.receita)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatNumber(totais.unidades)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatCurrency(totais.lucro)}</ModernTfootTd>
           <ModernTfootTd align="right"><MargemBadge value={margemTotal} /></ModernTfootTd>

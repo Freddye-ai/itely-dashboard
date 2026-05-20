@@ -66,7 +66,7 @@ function EstadoRow({
         </div>
       </td>
       <td className="px-4 py-3 text-right">
-        <span className="text-accent-emerald font-bold text-sm">{formatCurrency(uf.receita)}</span>
+        <span className="text-accent-cyan font-bold text-sm">{formatCurrency(uf.receita)}</span>
       </td>
       <td className="px-4 py-3 text-right text-text-muted text-sm">{formatNumber(uf.unidades)}</td>
       <td className="px-4 py-3 text-right text-text-muted text-sm">{formatCurrency(uf.lucro)}</td>
@@ -90,7 +90,7 @@ function MunicipioRow({ m, index }: { m: DadosMunicipio; index: number }) {
         </div>
       </td>
       <td className="px-4 py-2.5 text-right">
-        <span className="text-accent-emerald/80 text-sm font-medium">{formatCurrency(m.receita)}</span>
+        <span className="text-accent-cyan/80 text-sm font-medium">{formatCurrency(m.receita)}</span>
       </td>
       <td className="px-4 py-2.5 text-right text-text-muted text-sm">{formatNumber(m.unidades)}</td>
       <td className="px-4 py-2.5 text-right text-text-muted text-sm">{formatCurrency(m.lucro)}</td>
@@ -210,7 +210,7 @@ export function AnaliseGeografica({ dadosPorUF, dadosPorMunicipio, dadosPorRegia
       {grupos.length > 0 && (
         <ModernTfoot>
           <ModernTfootTd className="text-text-muted uppercase text-[11px] tracking-widest">Total Geral</ModernTfootTd>
-          <ModernTfootTd align="right" className="text-accent-emerald">{formatCurrency(totaisUF.receita)}</ModernTfootTd>
+          <ModernTfootTd align="right" className="text-accent-cyan">{formatCurrency(totaisUF.receita)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatNumber(totaisUF.unidades)}</ModernTfootTd>
           <ModernTfootTd align="right">{formatCurrency(totaisUF.lucro)}</ModernTfootTd>
           <ModernTfootTd align="right"><MargemBadge value={margemTotalUF} /></ModernTfootTd>
