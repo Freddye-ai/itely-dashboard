@@ -124,25 +124,26 @@ export function useVendas() {
     [dadosFiltrados],
   )
 
-  // Opções de filtro derivadas dos dados brutos (para dropdowns do Header)
+  // Opções de filtro — cada uma derivada dos dados filtrados pelos *outros* filtros
+  // ativos, para garantir que só aparecem opções que têm dados no contexto atual.
   const anosDisponiveis = useMemo(
-    () => getAnosDisponiveis(dados),
+    () => getAnosDisponiveis(dados),   // anos sempre do dataset completo
     [dados],
   )
 
   const ufsDisponiveis = useMemo(
-    () => getUFsDisponiveis(dados),
-    [dados],
+    () => getUFsDisponiveis(aplicarFiltros(dados, { ...filtros, uf: [] })),
+    [dados, filtros],
   )
 
   const gruposDisponiveis = useMemo(
-    () => getGruposDisponiveis(dados),
-    [dados],
+    () => getGruposDisponiveis(aplicarFiltros(dados, { ...filtros, grupo: [] })),
+    [dados, filtros],
   )
 
   const clientesDisponiveis = useMemo(
-    () => getClientesDisponiveis(dados),
-    [dados],
+    () => getClientesDisponiveis(aplicarFiltros(dados, { ...filtros, cliente: [] })),
+    [dados, filtros],
   )
 
   return {
