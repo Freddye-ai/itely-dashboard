@@ -87,8 +87,8 @@ export function ModernTh<K extends string>({
     <th
       className={[
         'px-4 py-3.5 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap select-none border-r border-accent-cyan/20 last:border-r-0',
-        isActive ? 'text-text-primary' : 'text-accent-cyan',
-        clickable ? 'cursor-pointer hover:text-text-primary transition-all' : '',
+        isActive ? 'text-white' : 'text-accent-cyan',
+        clickable ? 'cursor-pointer hover:text-white transition-all' : '',
         alignClass,
         className,
       ].join(' ')}
@@ -105,8 +105,8 @@ export function ModernTh<K extends string>({
 function SortIcon({ active, dir }: { active: boolean; dir: SortDir }) {
   if (!active) return <ChevronsUpDown className="w-3 h-3 opacity-30" />
   return dir === 'asc'
-    ? <ChevronUp   className="w-3 h-3 text-text-primary" />
-    : <ChevronDown className="w-3 h-3 text-text-primary" />
+    ? <ChevronUp   className="w-3 h-3 text-white" />
+    : <ChevronDown className="w-3 h-3 text-white" />
 }
 
 // ---------------------------------------------------------------------------
@@ -153,7 +153,7 @@ export function ModernTd({ children, align = 'left', className = '', muted = fal
 export function ModernTfoot({ children }: { children: React.ReactNode }) {
   return (
     <tfoot>
-      <tr style={{ background: '#1a1a1a', borderTop: '2px solid #2d2d2d' }}>{children}</tr>
+      <tr className="bg-bg-surface border-t-2 border-border-dark">{children}</tr>
     </tfoot>
   )
 }
