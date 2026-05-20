@@ -9,6 +9,7 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import { useFilterStore } from '../../store/filterStore'
+import { useThemeStore } from '../../store/themeStore'
 
 export type TabId = 'geral' | 'clientes' | 'geografica' | 'analitica'
 
@@ -27,6 +28,11 @@ interface SidebarProps {
 export function Sidebar({ activeTab, onChange }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
   const resetFiltrosLocais = useFilterStore((s) => s.resetFiltrosLocais)
+  const theme = useThemeStore((s) => s.theme)
+
+  const logoSrc = theme === 'light'
+    ? '/logo-itely-sem-fundo-ue6jl2iibe.webp'
+    : '/itely_logo_lg.png'
 
   function handleChange(tab: TabId) {
     if (tab === activeTab) return
@@ -50,7 +56,7 @@ export function Sidebar({ activeTab, onChange }: SidebarProps) {
             </div>
           ) : (
             <img
-              src="/itely_logo_lg.png"
+              src={logoSrc}
               alt="Itely Hair Fashion"
               className="w-full max-w-[180px] object-contain"
               onError={(e) => {
