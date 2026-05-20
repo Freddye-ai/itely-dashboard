@@ -131,15 +131,10 @@ export function Sidebar({ activeTab, onChange }: SidebarProps) {
           <div className="flex flex-col items-center gap-1.5 opacity-40 hover:opacity-70 transition-opacity cursor-default">
             <span className="text-[9px] text-text-muted uppercase tracking-widest">Desenvolvido por</span>
             <img
-              src={theme === 'light' ? '/output-onlinepngtools.png' : '/finance-brazil-logo-white-DMrqfvyl.png'}
+              src="/finance-brazil-logo-white-DMrqfvyl.png"
               alt="Desenvolvedor"
-              className={`h-5 object-contain ${theme === 'dark' ? 'brightness-0 invert' : ''}`}
-              onError={(e) => {
-                const el = e.target as HTMLImageElement
-                el.style.display = 'none'
-                const fb = el.nextElementSibling as HTMLElement | null
-                if (fb) fb.style.display = 'block'
-              }}
+              className={`h-5 object-contain brightness-0 ${theme === 'dark' ? 'invert' : ''}`}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
             <span className="hidden text-[9px] text-text-muted/50">© 2025</span>
           </div>
