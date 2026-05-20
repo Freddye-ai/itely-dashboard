@@ -53,10 +53,13 @@ export default function App() {
           {loading && dados.length === 0 && <LoadingScreen />}
           {error && !loading && <ErrorCard message={error} onRetry={refetch} />}
 
+          {/* KpiRow sempre visível enquanto há dados — garante acesso aos filtros */}
+          {!error && dados.length > 0 && (
+            <KpiRow kpis={kpis} filterProps={filterProps} />
+          )}
+
           {!error && dados.length > 0 && dadosFiltrados.length > 0 && (
             <>
-              <KpiRow kpis={kpis} filterProps={filterProps} />
-
               {activeTab === 'geral' && (
                 <DashboardGeral
                   dadosPorMes={dadosPorMes}
@@ -68,9 +71,7 @@ export default function App() {
                 />
               )}
               {activeTab === 'clientes' && (
-                <AnaliseClientes
-                  todosClientes={todosClientes}
-                />
+                <AnaliseClientes todosClientes={todosClientes} />
               )}
               {activeTab === 'geografica' && (
                 <AnaliseGeografica
@@ -91,7 +92,7 @@ export default function App() {
           {!error && !loading && dados.length > 0 && dadosFiltrados.length === 0 && (
             <div className="flex flex-col items-center justify-center gap-2 py-20">
               <p className="text-text-muted text-sm">Nenhum dado para o período selecionado.</p>
-              <p className="text-text-muted/40 text-xs">Ajuste os filtros nos cards.</p>
+              <p className="text-text-muted/40 text-xs">Ajuste os filtros acima.</p>
             </div>
           )}
         </main>
