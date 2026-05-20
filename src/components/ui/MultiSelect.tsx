@@ -56,7 +56,7 @@ export function MultiSelect({ label, options, selected, onChange, optionLabels }
           'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs transition-all whitespace-nowrap max-w-[200px]',
           hasSelected
             ? 'bg-accent-cyan/10 border-accent-cyan/50 text-accent-cyan'
-            : 'bg-bg-surface border-border-dark text-text-muted hover:text-white hover:border-accent-cyan/30',
+            : 'bg-bg-surface border-border-dark text-text-muted hover:text-text-primary hover:border-accent-cyan/30',
         ].join(' ')}
       >
         <span className="truncate">{selectedLabel}</span>
@@ -75,7 +75,7 @@ export function MultiSelect({ label, options, selected, onChange, optionLabels }
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar..."
-                className="w-full bg-bg-surface border border-border-dark rounded-lg px-2.5 py-1.5 text-xs text-white placeholder:text-text-muted/40 focus:outline-none focus:border-accent-cyan transition-colors"
+                className="w-full bg-bg-surface border border-border-dark rounded-lg px-2.5 py-1.5 text-xs text-text-primary placeholder:text-text-muted/40 focus:outline-none focus:border-accent-cyan transition-colors"
               />
             </div>
           )}
@@ -85,7 +85,7 @@ export function MultiSelect({ label, options, selected, onChange, optionLabels }
             onClick={() => onChange(allSelected ? [] : [...options])}
           >
             <Checkbox checked={allSelected} />
-            <span className="text-xs text-text-muted group-hover:text-white transition-colors">
+            <span className="text-xs text-text-muted group-hover:text-text-primary transition-colors">
               {allSelected ? 'Limpar todos' : 'Selecionar todos'}
             </span>
           </div>
@@ -103,7 +103,7 @@ export function MultiSelect({ label, options, selected, onChange, optionLabels }
                     onClick={() => toggle(opt)}
                   >
                     <Checkbox checked={checked} />
-                    <span className={`text-xs truncate transition-colors ${checked ? 'text-white font-medium' : 'text-text-muted group-hover:text-white'}`}>
+                    <span className={`text-xs truncate transition-colors ${checked ? 'text-text-primary font-medium' : 'text-text-muted group-hover:text-text-primary'}`}>
                       {getLabel(opt)}
                     </span>
                   </div>

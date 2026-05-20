@@ -63,7 +63,7 @@ export function Sidebar({ activeTab, onChange }: SidebarProps) {
         {!collapsed && (
           <button
             onClick={() => setCollapsed(true)}
-            className="text-text-muted hover:text-white transition-colors flex-shrink-0"
+            className="text-text-muted hover:text-text-primary transition-colors flex-shrink-0"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -74,7 +74,7 @@ export function Sidebar({ activeTab, onChange }: SidebarProps) {
       {collapsed && (
         <button
           onClick={() => setCollapsed(false)}
-          className="flex justify-center py-2 text-text-muted hover:text-white transition-colors border-b border-border-dark"
+          className="flex justify-center py-2 text-text-muted hover:text-text-primary transition-colors border-b border-border-dark"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -99,11 +99,11 @@ export function Sidebar({ activeTab, onChange }: SidebarProps) {
                 'w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-all duration-150 group',
                 active
                   ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/25'
-                  : 'text-text-muted hover:bg-bg-surface hover:text-white border border-transparent',
+                  : 'text-text-muted hover:bg-bg-surface hover:text-text-primary border border-transparent',
                 collapsed ? 'justify-center' : '',
               ].join(' ')}
             >
-              <span className={['flex-shrink-0 transition-colors', active ? 'text-accent-cyan' : 'text-text-muted group-hover:text-white'].join(' ')}>
+              <span className={['flex-shrink-0 transition-colors', active ? 'text-accent-cyan' : 'text-text-muted group-hover:text-text-primary'].join(' ')}>
                 {item.icon}
               </span>
               {!collapsed && (

@@ -4,15 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-page':        '#0d0d0d',
-        'bg-card':        '#1a1a1a',
-        'bg-surface':     '#252525',
+        // Tokens de tema — resolvidos via CSS variables (troca automática dark/light)
+        'bg-page':      'rgb(var(--bg-page) / <alpha-value>)',
+        'bg-card':      'rgb(var(--bg-card) / <alpha-value>)',
+        'bg-surface':   'rgb(var(--bg-surface) / <alpha-value>)',
+        'text-primary': 'rgb(var(--text-primary) / <alpha-value>)',
+        'text-muted':   'rgb(var(--text-muted) / <alpha-value>)',
+        'border-dark':  'rgb(var(--border-dark) / <alpha-value>)',
+        // Cores de acento — fixas em ambos os temas
         'accent-cyan':    '#D4A017',
         'accent-emerald': '#22d3ee',
         'accent-red':     '#f87171',
-        'text-primary':   '#f0f0f0',
-        'text-muted':     '#888888',
-        'border-dark':    '#2d2d2d',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],

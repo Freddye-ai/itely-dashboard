@@ -2,10 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Tema escuro (padrão) ─────────────────────────────────────── */
+:root {
+  --bg-page:      13 13 13;      /* #0d0d0d */
+  --bg-card:      26 26 26;      /* #1a1a1a */
+  --bg-surface:   37 37 37;      /* #252525 */
+  --text-primary: 240 240 240;   /* #f0f0f0 */
+  --text-muted:   136 136 136;   /* #888888 */
+  --border-dark:  45 45 45;      /* #2d2d2d */
+
+  /* Gradientes de fundo dos KPI cards — dark */
+  --kpi-cyan-from:    8 145 178;      /* cyan-600 */
+  --kpi-emerald-from: 6 95 70;        /* emerald-800 */
+  --kpi-blue-from:    30 64 175;      /* blue-800 */
+  --kpi-amber-from:   120 53 15;      /* amber-900 */
+  --kpi-red-from:     153 27 27;      /* red-800 */
+  --kpi-purple-from:  76 29 149;      /* purple-900 */
+  --kpi-gradient-opacity: 0.35;
+
+  /* Scrollbar */
+  --scrollbar-track: #1a1a1a;
+  --scrollbar-thumb: #3a3a3a;
+
+  /* Zebra */
+  --table-zebra: rgba(37, 37, 37, 0.6);
+
+  /* Sombra de card */
+  --card-shadow: none;
+}
+
+/* ─── Tema claro ───────────────────────────────────────────────── */
+.theme-light {
+  --bg-page:      241 245 249;   /* slate-100 */
+  --bg-card:      255 255 255;   /* white */
+  --bg-surface:   248 250 252;   /* slate-50 */
+  --text-primary: 15 23 42;      /* slate-900 */
+  --text-muted:   100 116 139;   /* slate-500 */
+  --border-dark:  226 232 240;   /* slate-200 */
+
+  /* Gradientes de fundo dos KPI cards — light */
+  --kpi-cyan-from:    207 250 254;   /* cyan-100 */
+  --kpi-emerald-from: 209 250 229;   /* emerald-100 */
+  --kpi-blue-from:    219 234 254;   /* blue-100 */
+  --kpi-amber-from:   254 243 199;   /* amber-100 */
+  --kpi-red-from:     254 226 226;   /* red-100 */
+  --kpi-purple-from:  243 232 255;   /* purple-100 */
+  --kpi-gradient-opacity: 1;
+
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+  --table-zebra: rgba(241, 245, 249, 0.8);
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07);
+}
+
 @layer base {
   body {
     @apply bg-bg-page text-text-primary font-sans;
-    color: #f0f0f0;
   }
 }
 
@@ -13,17 +65,17 @@
   /* Scrollbar customizada */
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: #2d2d2d #1a1a1a;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: var(--scrollbar-track);
   }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: #3a3a3a;
+    background-color: var(--scrollbar-thumb);
     border-radius: 3px;
   }
 
@@ -45,7 +97,7 @@
 
   /* Tabela zebra sutil */
   .table-zebra tbody tr:nth-child(even) {
-    background-color: rgba(37, 37, 37, 0.6);
+    background-color: var(--table-zebra);
   }
 
   /* Stagger delay para filhos */

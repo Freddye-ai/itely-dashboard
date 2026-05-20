@@ -9,6 +9,7 @@ import { DashboardGeral } from './components/tabs/DashboardGeral'
 import { AnaliseClientes } from './components/tabs/AnaliseClientes'
 import { AnaliseGeografica } from './components/tabs/AnaliseGeografica'
 import { TabelaAnalitica } from './components/tabs/TabelaAnalitica'
+import { useThemeStore } from './store/themeStore'
 
 const PAGE_META: Record<TabId, { title: string; subtitle: string }> = {
   geral:      { title: 'Dashboard Geral',     subtitle: 'Visão executiva · Faturamento e margem' },
@@ -19,6 +20,7 @@ const PAGE_META: Record<TabId, { title: string; subtitle: string }> = {
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>('geral')
+  const theme = useThemeStore((s) => s.theme)
 
   const {
     dados, dadosFiltrados, loading, error,
@@ -34,7 +36,7 @@ export default function App() {
   const filterProps = { anosDisponiveis, ufsDisponiveis, gruposDisponiveis, clientesDisponiveis }
 
   return (
-    <div className="flex h-screen bg-bg-page overflow-hidden">
+    <div className={`flex h-screen bg-bg-page overflow-hidden ${theme === 'light' ? 'theme-light' : ''}`}>
       <Sidebar activeTab={activeTab} onChange={setActiveTab} />
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
