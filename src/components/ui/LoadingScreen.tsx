@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react'
 import { LoadingSpinner } from './LoadingSpinner'
+import { useThemeStore } from '../../store/themeStore'
 
 export function LoadingScreen() {
   const [segundos, setSegundos] = useState(0)
+  const theme = useThemeStore((s) => s.theme)
+  const logoSrc = theme === 'light'
+    ? '/logo-itely-sem-fundo-ue6jl2iibe.webp'
+    : '/itely_logo_lg.png'
 
   useEffect(() => {
     const timer = setInterval(() => setSegundos((s) => s + 1), 1000)
@@ -19,7 +24,7 @@ export function LoadingScreen() {
     <div className="flex flex-col items-center justify-center gap-6 min-h-[400px]">
       {/* Logo cliente */}
       <img
-        src="/itely_logo_lg.png"
+        src={logoSrc}
         alt="Itely Hair Fashion"
         className="h-52 object-contain drop-shadow-lg"
         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
